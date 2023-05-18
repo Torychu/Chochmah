@@ -224,18 +224,23 @@ body {
 .mainborder {
   position: relative;
   display: flex;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: space-between;
+  top: 120px;
+  height: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 5px 5px 5px 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0.1, 0.2);
 }
 
 .main_m2 {
   position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  top: 120px;
   align-items: center;
-  padding: 0px 30px 0px 30px;
+  padding: 0px 5px 0px 5px;
 }
 
 .music2 {
@@ -284,4 +289,59 @@ body {
 .m4 {
   position: relative;
   top: 160px;
+}
+
+.fa-chart-simple {
+  position: relative;
+  left: 13px;
+  top: -36px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+}
+
+.playing {
+  position: relative;
+  top: 170px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 27.5px;
+  height: 55px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.playtext {
+  color: #787878;
+  font-size: xx-small;
+}
+
+.playtextbox {
+  position: relative;
+  color: white;
+  left: 20px;
+  font-size: small;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.playicon {
+  position: relative;
+  left: 50px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.pause {
+  font-size: x-large;
+}
+
+.ward {
+  font-size: small;
 }
