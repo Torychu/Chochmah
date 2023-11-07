@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="alert-box" id="alert">
+      <p id="alert_text">Alert박스</p>
+      <button onclick="AlertToggle('none')">닫기</button>
+    </div>
+    <button onclick="AlertToggle('block','1')">버튼1</button>
+    <button onclick="AlertToggle('block','2')">버튼2</button>
+
+    <script>
+      function AlertToggle(index, value) {
+        document.getElementById("alert").style.display = index;
+        //getElementByClassName("alert").style.display 의 경우 alert라는 클래스명을 가진 모든 요소를 찾음
+        //이를 위해 getElementByName("alert")[0].style.~~~ 대괄호 안의 값을 이용해 그 중 몇번째거를 사용할지 정해야함
+
+        if (value == 1) {
+          document.getElementById("alert_text").innerHTML = "로그인x";
+        } else if (value == 2) {
+          document.getElementById("alert_text").innerHTML = "비번x";
+        }
+        //이건 그냥 if문 안쓰고 파라미터를 수정하는게 좋은듯
+        /*function AlertToggle(index, value) {
+        document.getElementById("alert").style.display = index;
+
+        if (value == 1) {
+          document.getElementById("alert_text").innerHTML = value;
+        } else if (value == 2) {
+          document.getElementById("alert_text").innerHTML = value;
+        }
+
+        이렇게 수정하고 value 값 자체(로그인x,비번x)를 전달받으면 됨
+        */
+      }
+    </script>
+  </body>
+</html>

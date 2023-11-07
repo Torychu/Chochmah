@@ -1,0 +1,5 @@
+html 셀렉터에 대해
+
+document.getElementById("???").??? = "???";
+
+물음표 부분만 잘 채워넣자

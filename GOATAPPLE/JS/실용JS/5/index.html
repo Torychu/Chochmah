@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="alert-box" id="alert">
+      <p id="alert_text">Alert박스</p>
+      <button id="close">닫기</button>
+    </div>
+    <button onclick="AlertToggle('block','1')">버튼1</button>
+    <button onclick="AlertToggle('block','2')">버튼2</button>
+
+    <script>
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("alert").style.display = "none";
+      });
+      //close 요소가 클릭이 발생하면 function 실행
+    </script>
+  </body>
+</html>
