@@ -1,0 +1,8 @@
+// setCounter(counter + 1) : onClick 함수 내에서 몇 번을 실행하던지 counter가 1만 증가
+
+// setCounter((current) => current + 1) : 실행한 횟수만큼 counter가 증가
+
+// 단, onClick 함수 내에서 console.log를 찍으면 둘 다 변화가 없었음
+
+// 1)직접 할당 :setState(state +1)
+// 2)함수를 할당:setState(state => state +1) (함수의 첫번째 인자는 현재 state 이다)

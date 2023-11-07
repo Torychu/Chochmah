@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="http://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function MinutesToHours() {
+      const [amount, setAmount] = React.useState(0); // state 생성: amount는 데이터, setAmount는 이를 수정하기 위한 함수
+      const [flipped, setFlipped] = React.useState(false);
+
+      const onChange = (event) => {
+        setAmount(event.target.value); // 이를 통해서 입력값에 접근 가능
+      };
+
+      const reset = () => {
+        setAmount(0);
+      };
+
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !current);
+      };
+
+      return (
+        <div>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input
+              value={flipped ? amount * 60 : amount}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange} // 데이터를 업데이트하는 역할, onClick 같은 느낌
+              disabled={flipped}
+            />
+          </div>
+
+          <h4>You want to convert {amount} minutes to Miles</h4>
+          <div>
+            <label htmlFor="Miles">Hours</label>
+            <input
+              value={flipped ? amount : amount / 60}
+              id="Miles"
+              placeholder="Hours"
+              type="number"
+              disabled={!flipped}
+              onChange={onChange}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>{flipped ? "Turn back" : "Invert"}</button>
+        </div>
+      );
+    }
+
+    function KmToMiles() {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+
+      const reset = () => {
+        setAmount(0);
+      };
+
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !current);
+      };
+
+      return (
+        <div>
+          <div>
+            <label htmlFor="Km">Km</label>
+            <input
+              value={flipped ? amount * 1.609 : amount}
+              id="Km"
+              placeholder="Km"
+              type="number"
+              onChange={onChange} // 데이터를 업데이트하는 역할, onClick 같은 느낌
+              disabled={flipped}
+            />
+          </div>
+
+          <h4>You want to convert {amount} Km to Miles</h4>
+          <div>
+            <label htmlFor="Miles">Hours</label>
+            <input
+              value={flipped ? amount : amount / 1.609}
+              id="Miles"
+              placeholder="Miles"
+              type="number"
+              disabled={!flipped}
+              onChange={onChange}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>{flipped ? "Turn back" : "Invert"}</button>
+        </div>
+      );
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState("1");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      };
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value="0">Minutes & Hours</option>
+            <option value="1">Km & Miles</option>
+          </select>
+          <hr />
+          {index === "0" ? <MinutesToHours /> : <KmToMiles />}
+        </div>
+      );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

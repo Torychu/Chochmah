@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="http://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, changeValue, fontSize }) {
+      //부모로부터 인자를 받아오는 느낌
+      console.log(text, "was rendered");
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: fontSize,
+            // fontSize: big ? 18 : 16,  big이라는 값을 추가하여 가져옴으로써 미디어쿼리와 비슷한 효과를 줄 수 있음
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    const MemorizedBtn = React.memo(Btn);
+    //state가 변할 때 전부 다시 렌더링하지 않게 해줌, 주석처리해서 확인해보기
+
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <MemorizedBtn text={value} changeValue={changeValue} fontSize={18} />
+          <MemorizedBtn text="Continue" />
+        </div>
+      );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

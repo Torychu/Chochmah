@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="http://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script type="text/babel">
+    function Btn({ text, fontSize = "14" }) {
+      //이런식으로 주는 값이 없을 경우 기본값 설정 가능
+      console.log(text, "was rendered");
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: fontSize,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    Btn.PropTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+      //isRequired를 통해 꼭 필요한건지 확인할 수 있는듯?
+    };
+
+    function App() {
+      return (
+        <div>
+          <Btn text="Save change" fontSize={18} />
+          <Btn text={"Continue"} />
+        </div>
+      );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
