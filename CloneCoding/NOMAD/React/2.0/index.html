@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="http://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function Title() {
+      //명시적 반환: 이때는 Return을 명확히 해야함
+      return (
+        <h3 id="title" onMouseEnter={() => console.log("mouseenter")}>
+          Title
+        </h3>
+      );
+    } //HTML과 유사한 형식으로 구성된 React 코드
+
+    // const h3 = React.createElement(
+    //   "h3",
+    //   {
+    //     onMouseEnter: () => console.log("mouseenter"),
+    //   },
+    //   "Hello"
+    // ); //React를 이용한 구성방식, 다만 거의 쓸 일은 없음
+    const Button = () => (
+      //암시적 반환: Arrow function을 사용할때는 return을 표기 안해도 됨
+      <button
+        style={{
+          backgroundColor: "tomato",
+        }}
+        onClick={() => console.log("im clicked")}
+      >
+        Click me
+      </button>
+    );
+    // const btn = React.createElement(
+    //   "button",
+    //   {
+    //     onClick: () => console.log("Clicked on button"),
+    //   },
+    //   "Click me"
+    // );
+    const Container = () => (
+      <div>
+        <Title />
+        <Button />
+      </div>
+      //직접 만든 걸 불러오는 경우 대문자로 호출해야함
+    );
+    ReactDOM.render(<Container />, root);
+  </script>
+</html>
